@@ -4,14 +4,18 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
+	  <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="appsettings.Development.json" />
+    <None Remove="appsettings.json" />
+    <None Remove="appsettings.Production.json" />
     <None Remove="Fonts\Poppins-Black.ttf" />
     <None Remove="Fonts\Poppins-BlackItalic.ttf" />
     <None Remove="Fonts\Poppins-Bold.ttf" />
     <None Remove="Fonts\Poppins-BoldItalic.ttf" />
-    <None Remove="Fonts\Poppins-ExtraBold.ttf" />
+    <None Remove="Fonts\Poppins-ExtraBold.ttf" /> 
     <None Remove="Fonts\Poppins-ExtraBoldItalic.ttf" />
     <None Remove="Fonts\Poppins-ExtraLight.ttf" />
     <None Remove="Fonts\Poppins-ExtraLightItalic.ttf" />
@@ -28,11 +32,29 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="appsettings.Development.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="appsettings.Production.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MahApps.Metro.IconPacks" Version="4.9.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ModalControl\ModalControl.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -54,6 +76,21 @@
     <Resource Include="Fonts\Poppins-SemiBoldItalic.ttf" />
     <Resource Include="Fonts\Poppins-Thin.ttf" />
     <Resource Include="Fonts\Poppins-ThinItalic.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings1.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings1.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings1.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

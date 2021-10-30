@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dashboard.MVVM.ViewModel;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,26 +14,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Dashboard.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for ProjectsView.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class ProjectsView : UserControl
+    public partial class SettingsView : UserControl
     {
-        public ProjectsView()
+        public SettingsView()
         {
             InitializeComponent();
         }
 
-        private void OnShowModalClick(object sender, RoutedEventArgs e)
-        {
-            Modal.IsOpen = true;
-        }
-        private void OnCloseModalClick(object sender, RoutedEventArgs e)
-        {
-            Modal.IsOpen = false;
-        }
     }
 }

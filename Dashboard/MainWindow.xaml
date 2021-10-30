@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Dashboard"
-        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:viewModel="clr-namespace:Dashboard.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" 
@@ -21,7 +19,7 @@
     </Window.DataContext>
 
     <Border CornerRadius="42" 
-            Background="#FFF1F5FB" 
+            Background="#F1F5FB" 
             BorderThickness="20"
             MouseDown="Border_MouseDown">
         <Grid>
@@ -61,7 +59,8 @@
                 <RadioButton Content="Settings" 
                              Height="50"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"/>
+                             Style="{StaticResource MenuButtonTheme}"
+                             Command="{Binding SettingsViewCommand}"/>
             </StackPanel>
 
             <TextBox Name="SearchBar" 
@@ -70,7 +69,7 @@
                      VerticalAlignment="Center"
                      HorizontalAlignment="Left"
                      Grid.Column="1"
-                     Style="{StaticResource ModernTextbox}"
+                     Style="{StaticResource TextBoxTheme}"
                      FontFamily="/Fonts/#Poppins"/>
 
             <ContentControl Grid.Row="1"

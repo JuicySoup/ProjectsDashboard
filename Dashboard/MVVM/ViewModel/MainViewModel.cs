@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dashboard.Core;
+﻿using Dashboard.Core;
 
 namespace Dashboard.MVVM.ViewModel
 {
@@ -12,8 +7,12 @@ namespace Dashboard.MVVM.ViewModel
         public RelayCommand HomeViewCommand { get; set; }
         public RelayCommand ProjectsViewCommand { get; set; }
 
+        public RelayCommand SettingsViewCommand { get; set; }
+
         public HomeViewModel HomeVM { get; set; }
         public ProjectsViewModel ProjectsVM { get; set; }
+
+        public SettingsViewModel SettingsVM { get; set; }
 
         private object _currentView;
 
@@ -31,6 +30,7 @@ namespace Dashboard.MVVM.ViewModel
         {
             HomeVM = new HomeViewModel();
             ProjectsVM = new ProjectsViewModel();
+            SettingsVM = new SettingsViewModel();
 
             CurrentView = HomeVM;
 
@@ -42,6 +42,11 @@ namespace Dashboard.MVVM.ViewModel
             ProjectsViewCommand = new RelayCommand(o =>
             {
                 CurrentView = ProjectsVM;
+            });
+
+            SettingsViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = SettingsVM;
             });
         }
     }

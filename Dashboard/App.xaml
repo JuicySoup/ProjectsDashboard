@@ -12,6 +12,8 @@
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/ProjectCard.xaml"/>
                 <ResourceDictionary Source="Theme/NewProjectButton.xaml"/>
+                <ResourceDictionary Source="Theme/ProjectPathTextBox.xaml"/>
+                <ResourceDictionary Source="Theme/BrowseButton.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
             <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
@@ -19,6 +21,9 @@
             </DataTemplate>
             <DataTemplate DataType="{x:Type viewModel:ProjectsViewModel}">
                 <view:ProjectsView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                <view:SettingsView/>
             </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>

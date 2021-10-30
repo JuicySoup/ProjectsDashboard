@@ -1,15 +1,21 @@
-﻿using Dashboard.MVVM.Exceptions;
+﻿using Dashboard.Commands;
+using Dashboard.MVVM.Exceptions;
 using Dashboard.MVVM.Model;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Windows.Input;
 
 namespace Dashboard.MVVM.ViewModel
 {
     class ProjectsViewModel
     {
         public ObservableCollection<Project> Projects { get; set; }
+
+        public ObservableCollection<Category> Categories { get; set; }
         public ObservableCollection<Client> Clients { get; set; }
+
+        public ICommand NewCategory { get; }
         public int ProjectsCount { get; set; }
 
         public int InProgressCount { get; set; }
@@ -20,8 +26,22 @@ namespace Dashboard.MVVM.ViewModel
         {
             Projects = new ObservableCollection<Project>();
             Clients = new ObservableCollection<Client>();
-            SeedProjects();
+            Categories = new ObservableCollection<Category>();
+            UpdateCategories();
             ProjectsCount += Projects.Count;
+            NewCategory = new NewCategoryCommand(this);
+        }
+
+        public void AddCategory(Category category)
+        {
+            foreach (Category existingCategory in Categories)
+            {
+                if (existingCategory.Conflicts(category))
+                {
+                    throw new CategoryConflictException(existingCategory, category);
+                }
+            }
+            Categories.Add(category);
         }
 
         public void AddProject(Project project)
@@ -36,17 +56,16 @@ namespace Dashboard.MVVM.ViewModel
             Projects.Add(project);
         }
 
-        public void GetDirs(string foldername)
+        public void UpdateCategories()
         {
             try
             {
-                foreach (string dirs in Directory.GetDirectories($@"D:\Projects\{foldername}"))
+                foreach (string dirs in Directory.GetDirectories(Properties.Settings1.Default.ProjectPath))
                 {
                     string name = dirs.Remove(0, dirs.LastIndexOf('\\') + 1);
-                    AddProject(new Project()
+                    AddCategory(new Category()
                     {
-                        ProjectName = name,
-                        Category = foldername.ToLower()
+                        Name = name
                     });
                 }
 
@@ -55,11 +74,6 @@ namespace Dashboard.MVVM.ViewModel
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
-        }
-        public void SeedProjects()
-        {
-            GetDirs("FREELANCE");
-            GetDirs("PERSONAL");
         }
 
         public void CreateProject(Project project)

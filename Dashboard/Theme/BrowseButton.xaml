@@ -1,26 +1,29 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="{x:Type Button}"
-           x:Key="NewProjectButton">
+           x:Key="BrowseButton">
         <Style.Setters>
-        <Setter Property="Background" Value="#27c297"/>
-        <Setter Property="Foreground" Value="#ffff"/>
-        <Setter Property="FontWeight" Value="Regular"/>
-        <Setter Property="FontFamily" Value="/Fonts/#Poppins"/>
-         <Setter Property="FontSize" Value="14"/>
-            
+            <Setter Property="Background" Value="#F1F5FB"/>
+            <Setter Property="Foreground" Value="black"/>
+            <Setter Property="FontWeight" Value="Regular"/>
+            <Setter Property="FontFamily" Value="/Fonts/#Poppins"/>
+            <Setter Property="FontSize" Value="14"/>
+
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
                         <Border VerticalAlignment="Stretch"
                                 HorizontalAlignment="Stretch"
-                                Background="{TemplateBinding Background}"
+                                Background="#CCCCCC"
                                 CornerRadius="8">
-
-                            <TextBlock Text="{TemplateBinding Property=Content}"
+                            <Border Background="#F1F5FB"
+                                    CornerRadius="8"
+                                    BorderThickness="1.1">
+                                <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontFamily="/Fonts/#Poppins"/>
+                            </Border>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
