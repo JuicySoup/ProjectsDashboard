@@ -24,11 +24,6 @@ namespace Dashboard.MVVM.ViewModel
         public RelayCommand NewCategory { get; set; }
 
         public RelayCommand RefreshCategories { get; set; }
-        // public int ProjectsCount { get; set; }
-
-        // public int InProgressCount { get; set; }
-
-        //public int DoneCount { get; set; }
 
         private Color _selectedColor;
 
@@ -109,7 +104,6 @@ namespace Dashboard.MVVM.ViewModel
             Projects = new ObservableCollection<Project>();
             Clients = new ObservableCollection<Client>();
             UpdateCategories();
-            //ProjectsCount += Projects.Count;
 
             NewCategory = new RelayCommand(o =>
             {
@@ -125,9 +119,8 @@ namespace Dashboard.MVVM.ViewModel
                         Color = SelectedColor
                     };
                     Categories.Add(data);
-                    using StreamWriter json = File.CreateText(@$"{path}\settings.json");
-                    JsonSerializer serializer = new();
-                    serializer.Serialize(json, data);
+                    WriteSettingsFile(path, data);
+
                 }
             });
 
@@ -137,6 +130,21 @@ namespace Dashboard.MVVM.ViewModel
             });
 
 
+        }
+
+        public static void WriteSettingsFile(string path, Category data)
+        {
+            try
+            {
+                using StreamWriter json = File.CreateText(@$"{path}\settings.json");
+                JsonSerializer serializer = new();
+                serializer.Serialize(json, data);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("The process failed: {0}", e.ToString());
+            }
         }
 
         public void AddToCategories(Category category)
@@ -151,50 +159,40 @@ namespace Dashboard.MVVM.ViewModel
             Categories.Add(category);
         }
 
-        //public void AddProject(Project project)
-        //{
-        //    foreach (Project existingProject in Projects)
-        //    {
-        //        if (existingProject.Conflicts(project))
-        //        {
-        //            throw new ProjectConflictException(existingProject, project);
-        //        }
-        //    }
-        //    Projects.Add(project);
-        //}
-
         public void UpdateCategories()
         {
             try
             {
-                foreach (string dirs in Directory.GetDirectories(Properties.Settings1.Default.ProjectPath))
+                foreach (string path in Directory.GetDirectories(Properties.Settings1.Default.ProjectPath))
                 {
-                    string name = dirs.Remove(0, dirs.LastIndexOf('\\') + 1);
-                    AddToCategories(new Category
+                    string jsonpath = @$"{path}\settings.json";
+                    if (File.Exists(jsonpath))
                     {
-                        Name = name,
-                        Created = Directory.GetCreationTime(dirs).ToString("yyyy-MM-dd"),
-                        Color = new Color { Name = "Blue", Hex = "#1bc0ff", Hover = "f5fefb" }
-                    });
+                        using StreamReader json = File.OpenText(jsonpath);
+                        JsonSerializer serializer = new();
+                        Category category = (Category)serializer.Deserialize(json, typeof(Category));
+                        AddToCategories(category);
+                    }
+                    else
+                    {
+                        string name = path.Remove(0, path.LastIndexOf('\\') + 1);
+
+                        Category data = new()
+                        {
+                            Name = name,
+                            Color = Colors.Find(color => color.Name == "Blue"),
+                            Created = DateTime.Now.ToString("yyyy-MM-dd")
+                        };
+
+                        AddToCategories(data);
+                        WriteSettingsFile(path, data);
+                    }
                 }
-
-
             }
             catch (Exception e)
             {
                 Console.WriteLine("The process failed: {0}", e.ToString());
             }
         }
-
-        //public void CreateProject(Project project)
-        //{
-        //    foreach (Project existingProject in Projects)
-        //    {
-        //        if (existingProject.Conflicts(project))
-        //        {
-        //            throw new ProjectConflictException(existingProject, project);
-        //        }
-        //    }
-        //}
     }
 }

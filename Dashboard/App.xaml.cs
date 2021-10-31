@@ -24,11 +24,6 @@ namespace Dashboard
             {
                 Directory.CreateDirectory(path);
             }
-            //string settings = @"C:\ProManager\settings.json";
-            //if (!File.Exists(settings))
-            //{
-            //    File.Create(settings);
-            //}
             
         }
     }
