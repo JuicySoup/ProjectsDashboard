@@ -1,4 +1,5 @@
-﻿using Dashboard.MVVM.ViewModel;
+﻿using Dashboard.MVVM.Model;
+using Dashboard.MVVM.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -10,18 +11,19 @@ namespace Dashboard.Commands
 {
     class NewCategoryCommand : CommandBase
     {
-        private readonly ProjectsViewModel _projectsViewModel;
-        public NewCategoryCommand(ProjectsViewModel projectsViewModel)
+        private readonly CategoriesViewModel _projectsViewModel;
+        public NewCategoryCommand(CategoriesViewModel projectsViewModel)
         {
             _projectsViewModel = projectsViewModel;
         }
         public override void Execute(object parameter)
         {
-            string path = @"C:\ProManager\Projects\Test";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
+            //Category category = new Category()
+            //{
+            //    Name = _projectsViewModel.CategoryName
+            //};
+            //_projectsViewModel.ListCategories(category);
+
         }
     }
 }

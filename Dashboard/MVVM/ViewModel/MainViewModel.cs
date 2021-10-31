@@ -5,12 +5,12 @@ namespace Dashboard.MVVM.ViewModel
     class MainViewModel : ObservableObject
     {
         public RelayCommand HomeViewCommand { get; set; }
-        public RelayCommand ProjectsViewCommand { get; set; }
+        public RelayCommand CategoriesViewCommand { get; set; }
 
         public RelayCommand SettingsViewCommand { get; set; }
 
         public HomeViewModel HomeVM { get; set; }
-        public ProjectsViewModel ProjectsVM { get; set; }
+        public CategoriesViewModel CategoriesVM { get; set; }
 
         public SettingsViewModel SettingsVM { get; set; }
 
@@ -29,7 +29,7 @@ namespace Dashboard.MVVM.ViewModel
         public MainViewModel()
         {
             HomeVM = new HomeViewModel();
-            ProjectsVM = new ProjectsViewModel();
+
             SettingsVM = new SettingsViewModel();
 
             CurrentView = HomeVM;
@@ -39,9 +39,10 @@ namespace Dashboard.MVVM.ViewModel
                 CurrentView = HomeVM;
             });
 
-            ProjectsViewCommand = new RelayCommand(o =>
+            CategoriesViewCommand = new RelayCommand(o =>
             {
-                CurrentView = ProjectsVM;
+                CategoriesVM = new CategoriesViewModel();
+                CurrentView = CategoriesVM;
             });
 
             SettingsViewCommand = new RelayCommand(o =>

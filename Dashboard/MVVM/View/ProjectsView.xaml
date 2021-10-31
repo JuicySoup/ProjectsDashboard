@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl"
-             mc:Ignorable="d"
+             xmlns:local="clr-namespace:Dashboard.MVVM.View"
+             xmlns:custom="clr-namespace:ModalControl;assembly=ModalControl" 
+             mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="800">
-
     <Border CornerRadius="0, 0, 35 ,0" 
             Background="#ffffff" 
             BorderThickness="0">
@@ -33,7 +33,7 @@
                                 Padding="10 5"
                                 Click="OnCloseModalClick"
                                 VerticalAlignment="Top"/>
-                            <TextBlock Text="New Category"
+                            <TextBlock Text="New Project"
                                    FontFamily="/Fonts/#Poppins"
                                    FontSize="24"
                                    FontWeight="SemiBold"/>
@@ -52,11 +52,11 @@
                                  Margin="0, 0, 0, 35"
                                  VerticalAlignment="Center"
                                  HorizontalAlignment="Center"
-                                 Style="{StaticResource ProjectPathTextBox}"
                                  FontFamily="/Fonts/#Poppins"
                                  Foreground="#333333"
-                                 FontSize="15"/>
-
+                                 FontSize="15"
+                                 Text="{Binding CategoryName}">
+                        </TextBox>
 
                         <Button x:Name="btnCreateCategory"
                                 Content="Create Category"
@@ -64,12 +64,12 @@
                                 Foreground="#333333"
                                 FontSize="15"
                                 FontWeight="SemiBold"
-                                />
+                                Command="{Binding NewCategory}"/>
 
 
 
                     </StackPanel>
- 
+
 
                 </Grid>
             </custom:Modal>
@@ -91,23 +91,33 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-
-                    <DockPanel Grid.Row="0"
-                           Grid.Column="0"
-                           Margin="0,0,0,35">
-                        <TextBlock Text="All Projects"
-                               Foreground="#e26027"
+                    <StackPanel Grid.Row="0"
+                                Grid.Column="0">
+                        <TextBlock Text="Projects"
+                                   Margin="0, 0, 0, 10"
+                                   FontSize="18"
+                                   FontWeight="Bold"
+                                   FontFamily="/Fonts/#Poppins"/>
+                        <TextBlock Text="Find all your projects"
+                                   FontSize="14"
+                                   FontWeight="Medium"
+                                   FontFamily="/Fonts/#Poppins"
+                                   Foreground="#9A9FA6"
+                                   Margin="0, 0, 0, 10"/>
+                        <DockPanel Margin="0,0,0,35">
+                            <TextBlock Text="All Projects"
+                               Foreground="#1a5cf7"
                                FontSize="15"
                                FontWeight="Medium"
                                FontFamily="/Fonts/#Poppins"
                                Margin="0,15,5,15"
                                VerticalAlignment="Center"/>
-                        <Border Width="20"
+                            <Border Width="20"
                             Height="15"
                             CornerRadius="5"
                             Margin="0,-10,35,15"
-                            Background="#e26027">
-                            <TextBlock Text="{Binding ProjectsCount}"
+                            Background="#1a5cf7">
+                                <TextBlock Text="{Binding ProjectsCount}"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Foreground="#ffff"
@@ -115,20 +125,20 @@
                                    FontSize="10"
                                    FontFamily="/Fonts/#Poppins"/>
 
-                        </Border>
-                        <TextBlock Text="In Progress"
+                            </Border>
+                            <TextBlock Text="In Progress"
                                Foreground="#94989c"
                                FontSize="15"
                                FontWeight="Medium"
                                FontFamily="/Fonts/#Poppins"
                                Margin="0,15,5,15"
                                VerticalAlignment="Center"/>
-                        <Border Width="20"
+                            <Border Width="20"
                             Height="15"
                             CornerRadius="5"
                             Margin="0,-10,35,15"
                             Background="#94989c">
-                            <TextBlock Text="3"
+                                <TextBlock Text="3"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Foreground="#ffff"
@@ -136,20 +146,20 @@
                                    FontSize="10"
                                    FontFamily="/Fonts/#Poppins"/>
 
-                        </Border>
-                        <TextBlock Text="Done"
+                            </Border>
+                            <TextBlock Text="Done"
                                Foreground="#94989c"
                                FontSize="15"
                                FontWeight="Medium"
                                FontFamily="/Fonts/#Poppins"
                                Margin="0,15,5,15"
                                VerticalAlignment="Center"/>
-                        <Border Width="20"
+                            <Border Width="20"
                             Height="15"
                             CornerRadius="5"
                             Margin="0,-10,35,15"
                             Background="#94989c">
-                            <TextBlock Text="12"
+                                <TextBlock Text="12"
                                    VerticalAlignment="Center"
                                    HorizontalAlignment="Center"
                                    Foreground="#ffff"
@@ -157,35 +167,37 @@
                                    FontSize="10"
                                    FontFamily="/Fonts/#Poppins"/>
 
-                        </Border>
+                            </Border>
 
-                        <Button Width="160"
+                            <Button Width="160"
                             Height="50"
-                            Content="+ New Category"
+                            Content="+ New Project"
                             Style="{StaticResource NewProjectButton}"
                             HorizontalAlignment="Right"
                             Click="OnShowModalClick"/>
 
-                    </DockPanel>
+                        </DockPanel>
 
-                    <ListView ItemsSource="{Binding Categories}"
+                        <ListView ItemsSource="{Binding Categories}"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden"    
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           Background="#ffff"
                           BorderThickness="0"
-                          ItemContainerStyle="{StaticResource ProjectCard}"
+                          ItemContainerStyle="{StaticResource CategoryCard}"
                           Grid.Row="1">
 
-                        <ListView.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel/>
-                            </ItemsPanelTemplate>
-                        </ListView.ItemsPanel>
-                    </ListView>
+                            <ListView.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListView.ItemsPanel>
+                        </ListView>
+
+                    </StackPanel>
 
                 </Grid>
             </Grid>
         </Grid>
-        
+
     </Border>
 </UserControl>

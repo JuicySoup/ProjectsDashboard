@@ -54,7 +54,7 @@
                              Height="50"
                              FontSize="14"
                              Style="{StaticResource MenuButtonTheme}"
-                             Command="{Binding ProjectsViewCommand}"/>
+                             Command="{Binding CategoriesViewCommand}"/>
                 
                 <RadioButton Content="Settings" 
                              Height="50"

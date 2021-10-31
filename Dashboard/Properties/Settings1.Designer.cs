@@ -34,5 +34,17 @@ namespace Dashboard.Properties {
                 this["ProjectPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\ProManager\\Settings.json")]
+        public string Settings {
+            get {
+                return ((string)(this["Settings"]));
+            }
+            set {
+                this["Settings"] = value;
+            }
+        }
     }
 }

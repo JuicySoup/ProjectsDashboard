@@ -18,9 +18,9 @@ namespace Dashboard.MVVM.View
     /// <summary>
     /// Interaction logic for ProjectsView.xaml
     /// </summary>
-    public partial class ProjectsView : UserControl
+    public partial class CategoriesView : UserControl
     {
-        public ProjectsView()
+        public CategoriesView()
         {
             InitializeComponent();
         }
@@ -33,7 +33,5 @@ namespace Dashboard.MVVM.View
         {
             Modal.IsOpen = false;
         }
-
-
     }
 }
