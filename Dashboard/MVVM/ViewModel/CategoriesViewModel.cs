@@ -126,7 +126,8 @@ namespace Dashboard.MVVM.ViewModel
 
             RefreshCategories = new RelayCommand(o =>
             {
-
+                Categories.Clear(); 
+                UpdateCategories();
             });
 
 

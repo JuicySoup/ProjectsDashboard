@@ -74,19 +74,32 @@
                                    Foreground="#5c6775"/>
 
                         <ComboBox Margin="0, 0, 0, 35"
+                                  Style="{DynamicResource ComboBoxFlatStyle}"
+                                  Width="400"
+                                  Height="35"
+                                  Background="White"
                                   ItemsSource="{Binding Colors}"
                                   SelectedItem="{Binding SelectedColor}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <iconPacks:PackIconBootstrapIcons Kind="SquareFill" 
-                                                                          Foreground="{Binding Hex}"/>
-                                        <TextBlock Text="{Binding Name}"/>
+                                    <StackPanel Orientation="Horizontal"
+                                                Margin="10, 0 ,0 ,0">
+                                        <iconPacks:PackIconBootstrapIcons 
+                                            Kind="SquareFill" 
+                                            Foreground="{Binding Hex}"
+                                            Margin="0, 0, 15, 0"
+                                            VerticalAlignment="Center"/>
+                                        <TextBlock Text="{Binding Name}"
+                                                   FontFamily="/Fonts/#Poppins"
+                                                   FontSize="15"
+                                                   VerticalAlignment="Center"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        
+
+
+
 
                         <Button x:Name="btnCreateCategory"
                                 Content="Create Category"
@@ -95,7 +108,7 @@
                                 FontSize="15"
                                 FontWeight="SemiBold"
                                 Command="{Binding NewCategory}"
-                                Style="{StaticResource CreateCategory}"
+                                Style="{StaticResource CreateCategoryBtn}"
                                 Height="50"
                                 Width="400"
                                 Click="OnCloseModalClick"/>

@@ -1,13 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <Style TargetType="{x:Type Button}"
-           x:Key="CreateCategory">
+           x:Key="CreateCategoryBtn">
         <Style.Setters>
             <Setter Property="Background" Value="#1a5cf7"/>
         <Setter Property="Foreground" Value="#ffff"/>
         <Setter Property="FontWeight" Value="Regular"/>
         <Setter Property="FontFamily" Value="/Fonts/#Poppins"/>
-         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="14"/>
             
             <Setter Property="Template">
                 <Setter.Value>
