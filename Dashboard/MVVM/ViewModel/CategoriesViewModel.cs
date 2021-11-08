@@ -2,6 +2,7 @@
 using Dashboard.Core;
 using Dashboard.MVVM.Exceptions;
 using Dashboard.MVVM.Model;
+using Dashboard.Stores;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,13 +15,10 @@ using System.Windows.Input;
 
 namespace Dashboard.MVVM.ViewModel
 {
-    class CategoriesViewModel : ObservableObject
+    public class CategoriesViewModel : ObservableObject
     {
-        public ObservableCollection<Project> Projects { get; set; }
 
         public ObservableCollection<Category> Categories { get; set; }
-        public ObservableCollection<Client> Clients { get; set; }
-
         public RelayCommand NewCategory { get; set; }
 
         public RelayCommand RefreshCategories { get; set; }
@@ -96,18 +94,19 @@ namespace Dashboard.MVVM.ViewModel
             set { _categoryName = value; }
         }
 
-        public CategoriesViewModel()
+        public ICommand NavigateProjectCommand { get; }
+
+        public CategoriesViewModel(NavigationStore navigationStore)
         {
+            NavigateProjectCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel());
             Categories = new ObservableCollection<Category>();
             Colors = new List<Color>();
             SetColors();
-            Projects = new ObservableCollection<Project>();
-            Clients = new ObservableCollection<Client>();
             UpdateCategories();
 
             NewCategory = new RelayCommand(o =>
             {
-                string path = Properties.Settings1.Default.ProjectPath.ToString() + @"\" + CategoryName;
+                string path = Properties.Settings1.Default.CategoriesPath.ToString() + @"\" + CategoryName;
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
@@ -164,7 +163,7 @@ namespace Dashboard.MVVM.ViewModel
         {
             try
             {
-                foreach (string path in Directory.GetDirectories(Properties.Settings1.Default.ProjectPath))
+                foreach (string path in Directory.GetDirectories(Properties.Settings1.Default.CategoriesPath))
                 {
                     string jsonpath = @$"{path}\settings.json";
                     if (File.Exists(jsonpath))

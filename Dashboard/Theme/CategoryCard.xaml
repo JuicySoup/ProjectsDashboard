@@ -15,7 +15,6 @@
                             Margin="0,15,15,15"
                             BorderBrush="#edf1f4"
                             BorderThickness="2">
-                       
                         <StackPanel>
                             <DockPanel>
                                 <iconPacks:PackIconFontAwesome Kind="FolderSolid"
@@ -24,7 +23,6 @@
                                                             Width="48"
                                                             Height="48"
                                                             Foreground="{Binding Color.Hex}">
-                                                             <!--Todo add category color to foreground-->
                                 </iconPacks:PackIconFontAwesome>
                                 <iconPacks:PackIconCodicons Kind="Ellipsis"
                                                             HorizontalAlignment="Right"

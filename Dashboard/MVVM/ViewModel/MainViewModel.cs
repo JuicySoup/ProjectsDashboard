@@ -1,54 +1,40 @@
-﻿using Dashboard.Core;
+﻿using Dashboard.Commands;
+using Dashboard.Core;
+using Dashboard.Stores;
+using System;
+using System.Windows.Input;
 
 namespace Dashboard.MVVM.ViewModel
 {
-    class MainViewModel : ObservableObject
+    public class MainViewModel : ObservableObject
     {
-        public RelayCommand HomeViewCommand { get; set; }
-        public RelayCommand CategoriesViewCommand { get; set; }
+        private readonly NavigationStore _navigationStore;
 
-        public RelayCommand SettingsViewCommand { get; set; }
+        public object CurrentViewModel => _navigationStore.CurrentViewModel;
 
-        public HomeViewModel HomeVM { get; set; }
-        public CategoriesViewModel CategoriesVM { get; set; }
+        public ICommand SettingsViewCommand { get; }
 
-        public SettingsViewModel SettingsVM { get; set; }
+        public ICommand CategoriesViewCommand { get; }
 
-        private object _currentView;
+        public ICommand HomeViewCommand { get; }
 
-        public object CurrentView
+
+        public MainViewModel(NavigationStore navigationStore)
         {
-            get => _currentView;
-            set
-            {
-                _currentView = value;
-                OnPropertyChanged();
-            }
+            _navigationStore = navigationStore;
+
+            _navigationStore.CurrentViewModelChanged += OnCurrentViewModelChanged;
+
+            CategoriesViewCommand = new NavigateCommand<CategoriesViewModel>(navigationStore, () => new CategoriesViewModel(navigationStore));
+
+            HomeViewCommand = new NavigateCommand<HomeViewModel>(navigationStore, () => new HomeViewModel());
+
+            SettingsViewCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel());
         }
 
-        public MainViewModel()
+        private void OnCurrentViewModelChanged()
         {
-            HomeVM = new HomeViewModel();
-
-            SettingsVM = new SettingsViewModel();
-
-            CurrentView = HomeVM;
-
-            HomeViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = HomeVM;
-            });
-
-            CategoriesViewCommand = new RelayCommand(o =>
-            {
-                CategoriesVM = new CategoriesViewModel();
-                CurrentView = CategoriesVM;
-            });
-
-            SettingsViewCommand = new RelayCommand(o =>
-            {
-                CurrentView = SettingsVM;
-            });
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
     }
 }

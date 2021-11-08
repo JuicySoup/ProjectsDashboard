@@ -2,7 +2,7 @@
 
 namespace Dashboard.MVVM.Model
 {
-    class Project
+    public class Project
     {
         public string ProjectName { get; set; }
         public string Category { get; set; }

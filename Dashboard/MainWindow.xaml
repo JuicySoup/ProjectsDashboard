@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:Dashboard.MVVM.ViewModel"
+        xmlns:viewModel="clr-namespace:Dashboard.MVVM.ViewModel" 
+        xmlns:view="clr-namespace:Dashboard.MVVM.View"
         mc:Ignorable="d"
         Title="MainWindow" 
         Height="1200" 
@@ -13,10 +14,6 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen" 
         AllowsTransparency="True">
-
-    <Window.DataContext>
-        <viewModel:MainViewModel/>
-    </Window.DataContext>
 
     <Border CornerRadius="42" 
             Background="#F1F5FB" 
@@ -75,7 +72,23 @@
             <ContentControl Grid.Row="1"
                             Grid.Column="1"
                             Margin="0"
-                            Content="{Binding CurrentView}"/>
+                            Content="{Binding CurrentViewModel}">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type viewModel:HomeViewModel}">
+                        <view:HomeView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:CategoriesViewModel}">
+                        <view:CategoriesView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:SettingsViewModel}">
+                        <view:SettingsView/>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type viewModel:ProjectsViewModel}">
+                        <view:ProjectsView/>
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
+       
 
 
         </Grid>

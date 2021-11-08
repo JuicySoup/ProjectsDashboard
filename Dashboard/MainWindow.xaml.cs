@@ -1,17 +1,18 @@
-﻿using System.Windows;
+﻿using Dashboard.MVVM.ViewModel;
+using Dashboard.Stores;
+using System.Windows;
 using System.Windows.Input;
 
 
 namespace Dashboard
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            NavigationStore navigationStore = new();
+            DataContext = new MainViewModel(navigationStore);
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

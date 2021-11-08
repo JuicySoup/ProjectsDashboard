@@ -26,12 +26,12 @@ namespace Dashboard.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("C:\\ProManager\\Projects")]
-        public string ProjectPath {
+        public string CategoriesPath {
             get {
-                return ((string)(this["ProjectPath"]));
+                return ((string)(this["CategoriesPath"]));
             }
             set {
-                this["ProjectPath"] = value;
+                this["CategoriesPath"] = value;
             }
         }
         

@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Dashboard.Properties" GeneratedClassName="Settings1">
   <Profiles />
   <Settings>
-    <Setting Name="ProjectPath" Type="System.String" Scope="User">
+    <Setting Name="CategoriesPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">C:\ProManager\Projects</Value>
     </Setting>
     <Setting Name="Settings" Type="System.String" Scope="User">

@@ -1,12 +1,20 @@
-﻿using System;
+﻿using Dashboard.Commands;
+using Dashboard.Core;
+using Dashboard.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Dashboard.MVVM.ViewModel
 {
-    class HomeViewModel
+    public class HomeViewModel : ObservableObject
     {
+        public HomeViewModel()
+        {
+
+        }
     }
 }

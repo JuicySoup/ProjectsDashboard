@@ -98,7 +98,7 @@
                                    FontSize="18"
                                    FontWeight="Bold"
                                    FontFamily="/Fonts/#Poppins"/>
-                        <TextBlock Text="Find all your projects"
+                        <TextBlock Text="Projects inside category"
                                    FontSize="14"
                                    FontWeight="Medium"
                                    FontFamily="/Fonts/#Poppins"

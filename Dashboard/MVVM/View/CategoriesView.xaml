@@ -34,14 +34,14 @@
                                 HorizontalAlignment="Left"
                                 Background="Transparent"
                                 BorderThickness="0">
-                                <iconPacks:PackIconBootstrapIcons Kind="XLg"
+                            <iconPacks:PackIconBootstrapIcons Kind="XLg"
                                                                   HorizontalAlignment="Center"
                                                                   VerticalAlignment="Center"
                                                                   Foreground="#5c6775">
 
-                                </iconPacks:PackIconBootstrapIcons>
-                            </Button>
-                            <TextBlock Text="New Category"
+                            </iconPacks:PackIconBootstrapIcons>
+                        </Button>
+                        <TextBlock Text="New Category"
                                    FontFamily="/Fonts/#Poppins"
                                    FontSize="24"
                                    FontWeight="SemiBold"
@@ -116,7 +116,7 @@
 
 
                     </StackPanel>
- 
+
 
                 </Grid>
             </custom:Modal>
@@ -168,7 +168,7 @@
                             <iconPacks:PackIconBootstrapIcons Kind="GridFill"
                                                               Margin="0,10,15,0"
                                                               Foreground="#1a5cf7"/>
-                            
+
                             <iconPacks:PackIconBootstrapIcons Kind="ListUl"
                                                               Margin="0,10,25,0"/>
                             <TextBlock Text="By color"
@@ -218,12 +218,9 @@
                                 </ItemsPanelTemplate>
                             </ListView.ItemsPanel>
                         </ListView>
-
                     </StackPanel>
-                    
                 </Grid>
             </Grid>
         </Grid>
-        
     </Border>
 </UserControl>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dashboard.MVVM.Model
 {
-    class Color
+    public class Color
     {
         public string Name { get; set; }
         public string Hex { get; set; }

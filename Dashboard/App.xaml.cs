@@ -1,4 +1,6 @@
 ﻿using Dashboard.MVVM.Model;
+using Dashboard.MVVM.ViewModel;
+using Dashboard.Stores;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -11,20 +13,19 @@ using System.Windows;
 
 namespace Dashboard
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
             string path = @"C:\ProManager\Projects";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            
+
+            base.OnStartup(e);
         }
+
+
     }
 }

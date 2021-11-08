@@ -11,7 +11,7 @@ using Dashboard.Commands;
 
 namespace Dashboard.MVVM.ViewModel
 {
-    class SettingsViewModel : ObservableObject
+    public class SettingsViewModel : ObservableObject
     {
         private string _projectsPath;
 
@@ -30,7 +30,7 @@ namespace Dashboard.MVVM.ViewModel
 
         public SettingsViewModel()
         {
-            ProjectsPath = Properties.Settings1.Default.ProjectPath;
+            ProjectsPath = Properties.Settings1.Default.CategoriesPath;
 
             BrowseCommand = new BrowseFoldersCommand(this);
         }

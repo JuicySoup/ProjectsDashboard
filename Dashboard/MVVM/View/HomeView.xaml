@@ -11,5 +11,6 @@
     <Border CornerRadius="0, 0, 35 ,0" 
             Background="#ffffff" 
             BorderThickness="0">
+        <TextBlock Text="Home page: Todo"/>
     </Border>
 </UserControl>

@@ -1,7 +1,7 @@
 ﻿
 namespace Dashboard.MVVM.Model
 {
-    class Client
+    public class Client
     {
         public string Name { get; set; }
         public string Website { get; set; }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Dashboard.MVVM.ViewModel;
+using Dashboard.Stores;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,8 @@ namespace Dashboard.MVVM.View
         public CategoriesView()
         {
             InitializeComponent();
+            NavigationStore navigationStore = new();
+            DataContext = new CategoriesViewModel(navigationStore);
         }
 
         private void OnShowModalClick(object sender, RoutedEventArgs e)

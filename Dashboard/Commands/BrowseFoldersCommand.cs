@@ -18,13 +18,13 @@ namespace Dashboard.Commands
         {
             System.Windows.Forms.FolderBrowserDialog openFileDlg = new();
 
-            openFileDlg.SelectedPath = Properties.Settings1.Default.ProjectPath;
+            openFileDlg.SelectedPath = Properties.Settings1.Default.CategoriesPath;
 
             System.Windows.Forms.DialogResult result = openFileDlg.ShowDialog();
 
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                Properties.Settings1.Default.ProjectPath = openFileDlg.SelectedPath;
+                Properties.Settings1.Default.CategoriesPath = openFileDlg.SelectedPath;
                 Properties.Settings1.Default.Save();
                 _settingsViewModel.ProjectsPath = openFileDlg.SelectedPath;
             }
