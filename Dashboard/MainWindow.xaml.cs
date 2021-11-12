@@ -12,6 +12,7 @@ namespace Dashboard
         {
             InitializeComponent();
             NavigationStore navigationStore = new();
+
             DataContext = new MainViewModel(navigationStore);
         }
 

@@ -1,6 +1,7 @@
 ﻿using Dashboard.Core;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,10 @@ namespace Dashboard.Stores
 {
     public class NavigationStore
     {
+        public event Action CurrentViewModelChanged;
 
-        private object _currentViewModel;
-
-        public object CurrentViewModel
+        private ObservableObject _currentViewModel;
+        public ObservableObject CurrentViewModel
         {
             get => _currentViewModel;
             set
@@ -21,8 +22,6 @@ namespace Dashboard.Stores
                 OnCurrentViewModelChanged();
             }
         }
-
-        public event Action CurrentViewModelChanged;
 
         private void OnCurrentViewModelChanged()
         {

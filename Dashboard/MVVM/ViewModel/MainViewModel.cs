@@ -9,8 +9,7 @@ namespace Dashboard.MVVM.ViewModel
     public class MainViewModel : ObservableObject
     {
         private readonly NavigationStore _navigationStore;
-
-        public object CurrentViewModel => _navigationStore.CurrentViewModel;
+        public ObservableObject CurrentViewModel => _navigationStore.CurrentViewModel;
 
         public ICommand SettingsViewCommand { get; }
 

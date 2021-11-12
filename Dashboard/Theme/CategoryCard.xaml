@@ -47,6 +47,9 @@
                              <Run Text="{Binding Created}"/>
                             </TextBlock>
                         </StackPanel>
+                        <Border.InputBindings>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.NavigateProjectCommand,RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                        </Border.InputBindings>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>
