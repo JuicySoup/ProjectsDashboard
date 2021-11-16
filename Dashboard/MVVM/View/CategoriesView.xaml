@@ -205,12 +205,13 @@
                         </DockPanel>
 
                         <ListView ItemsSource="{Binding Categories}"
-                          ScrollViewer.VerticalScrollBarVisibility="Hidden"    
-                          ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                          Background="#ffff"
-                          BorderThickness="0"
-                          ItemContainerStyle="{StaticResource CategoryCard}"
-                          Grid.Row="1">
+                                  SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                                  ScrollViewer.VerticalScrollBarVisibility="Hidden"    
+                                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                  Background="#ffff"
+                                  BorderThickness="0"
+                                  ItemContainerStyle="{StaticResource CategoryCard}"
+                                  Grid.Row="1">
 
                             <ListView.ItemsPanel>
                                 <ItemsPanelTemplate>

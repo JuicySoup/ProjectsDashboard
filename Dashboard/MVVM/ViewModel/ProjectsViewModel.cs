@@ -14,16 +14,20 @@ namespace Dashboard.MVVM.ViewModel
 {
     public class ProjectsViewModel : ObservableObject
     {
+        private readonly Category _category;
+
+        public string ProjectName => _category.Name;
+
         public ObservableCollection<Project> Projects { get; set; }
         public ObservableCollection<Client> Clients { get; set; }
 
+        public Colors Colors { get; set; }
 
-        public List<Color> Colors { get; set; }
-
-        public ProjectsViewModel()
+        public ProjectsViewModel(Category category)
         {
+            _category = category;
             Projects = new ObservableCollection<Project>();
-            Colors = new List<Color>();
+            Colors = new Colors();
         }
 
         public void AddToProjects(Project project)

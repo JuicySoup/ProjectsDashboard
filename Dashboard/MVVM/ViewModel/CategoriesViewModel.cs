@@ -36,6 +36,18 @@ namespace Dashboard.MVVM.ViewModel
             }
         }
 
+        private Category _selectedItem;
+
+        public Category SelectedItem
+        {
+            get { return _selectedItem; }
+            set 
+            { 
+                _selectedItem = value;
+                OnPropertyChanged(nameof(SelectedItem));
+            }
+        }
+
 
         private string _categoryName;
 
@@ -49,7 +61,7 @@ namespace Dashboard.MVVM.ViewModel
 
         public CategoriesViewModel(NavigationStore navigationStore)
         {
-            NavigateProjectsCommand = new NavigateCommand<ProjectsViewModel>(navigationStore, () => new ProjectsViewModel());
+            NavigateProjectsCommand = new NavigateCommand<ProjectsViewModel>(navigationStore, () => new ProjectsViewModel(new Category { Name = SelectedItem.Name }));
             Categories = new ObservableCollection<Category>();
             Colors = new Colors();
             UpdateCategories();

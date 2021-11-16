@@ -62,7 +62,7 @@
                                  FontFamily="/Fonts/#Poppins"
                                  Foreground="#333333"
                                  FontSize="15"
-                                 Text="{Binding ProjectName}">
+                                 Text="{Binding ProjectName, Mode=OneWay}">
                         </TextBox>
 
                         <TextBlock Text="Color"
@@ -205,7 +205,8 @@
 
                         </DockPanel>
 
-                        <ListView ItemsSource="{Binding Projects}"
+                        <ListView 
+                          ItemsSource="{Binding Projects}"
                           ScrollViewer.VerticalScrollBarVisibility="Hidden"    
                           ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                           Background="#ffff"
