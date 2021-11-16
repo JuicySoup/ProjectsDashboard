@@ -25,8 +25,6 @@ namespace Dashboard.MVVM.View
         public CategoriesView()
         {
             InitializeComponent();
-            NavigationStore navigationStore = new();
-            DataContext = new CategoriesViewModel(navigationStore);
         }
 
         private void OnShowModalClick(object sender, RoutedEventArgs e)

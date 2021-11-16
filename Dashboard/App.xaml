@@ -3,15 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Dashboard"
              xmlns:viewModel="clr-namespace:Dashboard.MVVM.ViewModel"
-             xmlns:view="clr-namespace:Dashboard.MVVM.View"
-             StartupUri="MainWindow.xaml">
+             xmlns:view="clr-namespace:Dashboard.MVVM.View">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="Theme/MenuButton.xaml"/>
                 <ResourceDictionary Source="Theme/TextBoxTheme.xaml"/>
                 <ResourceDictionary Source="Theme/CategoryCard.xaml"/>
-                <ResourceDictionary Source="Theme/NewProjectButton.xaml"/>
+                <ResourceDictionary Source="Theme/ProjectCard.xaml"/>
+                <ResourceDictionary Source="Theme/CreateProjectButton.xaml"/>
                 <ResourceDictionary Source="Theme/CreateCategoryButton.xaml"/>
                 <ResourceDictionary Source="Theme/ProjectPathTextBox.xaml"/>
                 <ResourceDictionary Source="Theme/BrowseButton.xaml"/>

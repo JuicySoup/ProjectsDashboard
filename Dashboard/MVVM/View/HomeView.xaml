@@ -11,6 +11,17 @@
     <Border CornerRadius="0, 0, 35 ,0" 
             Background="#ffffff" 
             BorderThickness="0">
-        <TextBlock Text="Home page: Todo"/>
+        <Grid MaxWidth="1000" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0"
+            FontSize="28"
+            Text="Home" />
+
+        </Grid>
     </Border>
 </UserControl>

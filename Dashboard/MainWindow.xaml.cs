@@ -11,9 +11,6 @@ namespace Dashboard
         public MainWindow()
         {
             InitializeComponent();
-            NavigationStore navigationStore = new();
-
-            DataContext = new MainViewModel(navigationStore);
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)

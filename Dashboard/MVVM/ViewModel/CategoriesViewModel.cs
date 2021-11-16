@@ -20,8 +20,9 @@ namespace Dashboard.MVVM.ViewModel
 
         public ObservableCollection<Category> Categories { get; set; }
         public RelayCommand NewCategory { get; set; }
-
         public RelayCommand RefreshCategories { get; set; }
+
+        public Colors Colors { get; set; }
 
         private Color _selectedColor;
 
@@ -35,56 +36,6 @@ namespace Dashboard.MVVM.ViewModel
             }
         }
 
-        public List<Color> Colors { get; set; }
-
-        public void SetColors()
-        {
-
-            Colors.Add(new Color
-            {
-                Name = "Blue",
-                Hex = "#1bc0ff",
-                Hover = "#f4fcff"
-            });
-
-            Colors.Add(new Color
-            {
-                Name = "Pink",
-                Hex = "#ffa6bc",
-                Hover = "#fffbfc"
-            });
-
-            Colors.Add(new Color
-            {
-                Name = "Turquoise",
-                Hex = "#50e3c1",
-                Hover = "#f5fefb"
-            });
-            Colors.Add(new Color
-            {
-                Name = "Royal Blue",
-                Hex = "#5a71d9",
-                Hover = "#b4bad4"
-            });
-            Colors.Add(new Color
-            {
-                Name = "Orange",
-                Hex = "#ff9d4c",
-                Hover = "#fff7f0"
-            });
-            Colors.Add(new Color
-            {
-                Name = "Purple",
-                Hex = "#aa61fe",
-                Hover = "#f8f5fe"
-            });
-            Colors.Add(new Color
-            {
-                Name = "Green",
-                Hex = "#b8e986",
-                Hover = "#dbe6d1"
-            });
-        }
 
         private string _categoryName;
 
@@ -94,14 +45,13 @@ namespace Dashboard.MVVM.ViewModel
             set { _categoryName = value; }
         }
 
-        public ICommand NavigateProjectCommand { get; }
+        public ICommand NavigateProjectsCommand { get; }
 
         public CategoriesViewModel(NavigationStore navigationStore)
         {
-            NavigateProjectCommand = new NavigateCommand<SettingsViewModel>(navigationStore, () => new SettingsViewModel());
+            NavigateProjectsCommand = new NavigateCommand<ProjectsViewModel>(navigationStore, () => new ProjectsViewModel());
             Categories = new ObservableCollection<Category>();
-            Colors = new List<Color>();
-            SetColors();
+            Colors = new Colors();
             UpdateCategories();
 
             NewCategory = new RelayCommand(o =>
@@ -180,7 +130,7 @@ namespace Dashboard.MVVM.ViewModel
                         Category data = new()
                         {
                             Name = name,
-                            Color = Colors.Find(color => color.Name == "Blue"),
+                            Color = Colors.ListOfColors.Find(color => color.Name == "Blue"),
                             Created = DateTime.Now.ToString("yyyy-MM-dd")
                         };
 

@@ -48,7 +48,7 @@
                             </TextBlock>
                         </StackPanel>
                         <Border.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.NavigateProjectCommand,RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                            <MouseBinding MouseAction="LeftClick" Command="{Binding DataContext.NavigateProjectsCommand,RelativeSource={RelativeSource AncestorType=ListView}}"/>
                         </Border.InputBindings>
                     </Border>
                 </ControlTemplate>

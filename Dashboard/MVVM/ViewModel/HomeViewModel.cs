@@ -12,9 +12,6 @@ namespace Dashboard.MVVM.ViewModel
 {
     public class HomeViewModel : ObservableObject
     {
-        public HomeViewModel()
-        {
-
-        }
     }
 }
+

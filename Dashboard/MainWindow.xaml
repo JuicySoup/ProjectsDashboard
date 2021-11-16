@@ -43,20 +43,20 @@
                 <RadioButton Content="Home" 
                              Height="50"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"
+                             Style="{StaticResource MenuButton}"
                              IsChecked="True"
                              Command="{Binding HomeViewCommand}"/>
                 
                 <RadioButton Content="Projects" 
                              Height="50"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"
+                             Style="{StaticResource MenuButton}"
                              Command="{Binding CategoriesViewCommand}"/>
                 
                 <RadioButton Content="Settings" 
                              Height="50"
                              FontSize="14"
-                             Style="{StaticResource MenuButtonTheme}"
+                             Style="{StaticResource MenuButton}"
                              Command="{Binding SettingsViewCommand}"/>
             </StackPanel>
 
