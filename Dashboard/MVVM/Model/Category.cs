@@ -15,10 +15,6 @@ namespace Dashboard.MVVM.Model
 
         public Color Color { get; set; }
 
-        //TODO
-        //add colors for categories
-        //public int MyProperty { get; set; } 
-
         public ObservableCollection<Project> Projects { get; set; }
 
         internal bool Conflicts(Category category)

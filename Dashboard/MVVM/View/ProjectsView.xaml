@@ -19,7 +19,7 @@
                 </custom:Modal.Background>
                 <Grid
                         Width="500"
-                        Height="400"
+                        Height="500"
                         Background="White">
                     <StackPanel Orientation="Vertical">
                         <Button
@@ -40,7 +40,7 @@
 
                             </iconPacks:PackIconBootstrapIcons>
                         </Button>
-                        <TextBlock Text="New Category"
+                        <TextBlock Text="New Project"
                                    FontFamily="/Fonts/#Poppins"
                                    FontSize="24"
                                    FontWeight="SemiBold"
@@ -62,8 +62,50 @@
                                  FontFamily="/Fonts/#Poppins"
                                  Foreground="#333333"
                                  FontSize="15"
-                                 Text="{Binding ProjectName, Mode=OneWay}">
+                                 Text="{Binding ProjectName}">
                         </TextBox>
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Client"
+                                   FontFamily="/Fonts/#Poppins"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Margin="50, 0, 0, 10"
+                                   Foreground="#5c6775"/>
+
+                                <TextBox Width="190"
+                                 Height="35"
+                                 Margin="50, 0, 0, 35"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Left"
+                                 FontFamily="/Fonts/#Poppins"
+                                 Foreground="#333333"
+                                 FontSize="15"
+                                 Text="{Binding Client, Mode=OneWay}">
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Template"
+                                   FontFamily="/Fonts/#Poppins"
+                                   FontSize="16"
+                                   FontWeight="SemiBold"
+                                   Margin="15, 0, 0, 10"
+                                   Foreground="#5c6775"/>
+
+                                <TextBox Width="195"
+                                 Height="35"
+                                 Margin="15, 0, 0, 35"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Left"
+                                 FontFamily="/Fonts/#Poppins"
+                                 Foreground="#333333"
+                                 FontSize="15"
+                                 Text="{Binding Client, Mode=OneWay}">
+                                </TextBox>
+                            </StackPanel>
+                        </StackPanel>
+
+
 
                         <TextBlock Text="Color"
                                    FontFamily="/Fonts/#Poppins"
@@ -77,7 +119,7 @@
                                   Width="400"
                                   Height="35"
                                   Background="White"
-                                  ItemsSource="{Binding Colors}"
+                                  ItemsSource="{Binding Colors.ListOfColors}"
                                   SelectedItem="{Binding SelectedColor}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
@@ -96,6 +138,17 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
+
+                        <Button Content="Create Project"
+                                FontFamily="/Fonts/#Poppins"
+                                Foreground="#Ffff"
+                                FontSize="15"
+                                FontWeight="SemiBold"
+                                Command="{Binding NewProject}"
+                                Style="{StaticResource CreateCategoryBtn}"
+                                Height="50"
+                                Width="400"
+                                Click="OnCloseModalClick"/>
                     </StackPanel>
 
                 </Grid>
@@ -125,12 +178,21 @@
                                    FontSize="18"
                                    FontWeight="Bold"
                                    FontFamily="/Fonts/#Poppins"/>
-                        <TextBlock Text="Projects inside category"
-                                   FontSize="14"
-                                   FontWeight="Medium"
-                                   FontFamily="/Fonts/#Poppins"
-                                   Foreground="#9A9FA6"
-                                   Margin="0, 0, 0, 10"/>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Projects inside the category:"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    FontFamily="/Fonts/#Poppins"
+                                    Foreground="#9A9FA6"
+                                    Margin="0, 0, 0, 10"/>
+                            <TextBlock Text="{Binding CategoryName}"
+                                    FontSize="14"
+                                    FontWeight="Medium"
+                                    FontFamily="/Fonts/#Poppins"
+                                    Foreground="#9A9FA6"
+                                    Margin="5, 0, 0, 0"/>
+                        </StackPanel>
+
                         <DockPanel Margin="0,0,0,35">
                             <TextBlock Text="All Projects"
                                Foreground="#1a5cf7"

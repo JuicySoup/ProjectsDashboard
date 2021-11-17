@@ -98,9 +98,6 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
-
-
-
                         <Button x:Name="btnCreateCategory"
                                 Content="Create Category"
                                 FontFamily="/Fonts/#Poppins"
@@ -112,9 +109,6 @@
                                 Height="50"
                                 Width="400"
                                 Click="OnCloseModalClick"/>
-
-
-
                     </StackPanel>
 
 
@@ -205,7 +199,7 @@
                         </DockPanel>
 
                         <ListView ItemsSource="{Binding Categories}"
-                                  SelectedItem="{Binding SelectedItem, UpdateSourceTrigger=PropertyChanged}"
+                                  SelectedItem="{Binding SelectedItem}"
                                   ScrollViewer.VerticalScrollBarVisibility="Hidden"    
                                   ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                                   Background="#ffff"

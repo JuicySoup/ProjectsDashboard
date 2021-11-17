@@ -4,17 +4,18 @@ namespace Dashboard.MVVM.Model
 {
     public class Project
     {
-        public string ProjectName { get; set; }
-        public string Category { get; set; }
+        public string Name { get; set; }
         public bool InProgress { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public string Created { get; set; }
         public string Details { get; set; }
-        public Client Client { get; set; }
+        public string Client { get; set; }
+
+        public Color Color { get; set; }
 
 
         internal bool Conflicts(Project project)
         {
-            return project.ProjectName == ProjectName;
+            return project.Name == Name;
         }
     }
 }

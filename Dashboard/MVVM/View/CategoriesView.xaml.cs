@@ -1,7 +1,9 @@
-﻿using Dashboard.MVVM.ViewModel;
+﻿using Dashboard.MVVM.Model;
+using Dashboard.MVVM.ViewModel;
 using Dashboard.Stores;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

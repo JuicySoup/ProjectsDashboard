@@ -68,7 +68,7 @@ namespace Dashboard.MVVM.ViewModel
 
             NewCategory = new RelayCommand(o =>
             {
-                string path = Properties.Settings1.Default.CategoriesPath.ToString() + @"\" + CategoryName;
+                string path = $@"{Properties.Settings1.Default.CategoriesPath}\{CategoryName}";
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
@@ -87,7 +87,7 @@ namespace Dashboard.MVVM.ViewModel
 
             RefreshCategories = new RelayCommand(o =>
             {
-                Categories.Clear(); 
+                Categories.Clear();
                 UpdateCategories();
             });
 

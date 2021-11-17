@@ -48,9 +48,9 @@
                             </TextBlock>
                         </StackPanel>
                         <Border.InputBindings>
-                            <MouseBinding MouseAction="LeftClick" 
+                            <MouseBinding MouseAction="LeftDoubleClick" 
                                           Command="{Binding DataContext.NavigateProjectsCommand,RelativeSource={RelativeSource AncestorType=ListView}}" 
-                                          CommandParameter="{Binding DataContext.SelectedItem,RelativeSource={RelativeSource AncestorType=ListView}}"/>
+                                          CommandParameter="{Binding DataContext.SelectedItem,RelativeSource={RelativeSource AncestorType=ListViewItem}}"/>
                         </Border.InputBindings>
                     </Border>
                 </ControlTemplate>
@@ -58,6 +58,9 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{Binding Color.Hover}"/>
+            </Trigger>
+            <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{Binding Color.Hover}"/>
             </Trigger>
         </Style.Triggers>
